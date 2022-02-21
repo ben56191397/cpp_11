@@ -160,7 +160,8 @@ constexpr BaseType_t lgBase = 9; // 注意10000*10000刚刚好小于int的取值
 constexpr BaseType_t Base = 1000000000; // 注意10000*10000刚刚好小于int的取值范围
 
 // 大整数的表示
-template<BaseType_t...I> struct BigInteger {
+template<BaseType_t...I> 
+struct BigInteger {
     using type = BigInteger;
 };
 

@@ -1,5 +1,5 @@
 
-//ç®—æ³•åŸç†ä¸å®è·µ
+//Ëã·¨Ô­ÀíÓëÊµ¼ù
 
 #include <iostream>
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 #include <cstring>
 #include <memory>
 
-//å…¬å…±æŠ½è±¡ç±»
+//¹«¹²³éÏóÀà
 class Phone
 {
 public:
@@ -17,17 +17,17 @@ public:
 	virtual ~Phone() {}
 	virtual void ShowDecorate() {}
 };
-//å…·ä½“çš„æ‰‹æœºç±»
+//¾ßÌåµÄÊÖ»úÀà
 class iPhone : public Phone
 {
 private:
-	string m_name; //æ‰‹æœºåç§°
+	string m_name; //ÊÖ»úÃû³Æ
 public:
 	iPhone(string name): m_name(name){}
 	~iPhone() {}
-	void ShowDecorate() { cout<<m_name<<"çš„è£…é¥°"<<endl;}
+	void ShowDecorate() { cout<<m_name<<"µÄ×°ÊÎ"<<endl;}
 };
-//å…·ä½“çš„æ‰‹æœºç±»
+//¾ßÌåµÄÊÖ»úÀà
 class NokiaPhone : public Phone
 {
 private:
@@ -35,44 +35,44 @@ private:
 public:
 	NokiaPhone(string name): m_name(name){}
 	~NokiaPhone() {}
-	void ShowDecorate() { cout<<m_name<<"çš„è£…é¥°"<<endl;}
+	void ShowDecorate() { cout<<m_name<<"µÄ×°ÊÎ"<<endl;}
 };
 
 
-//è£…é¥°ç±»
+//×°ÊÎÀà
 class DecoratorPhone : public Phone
 {
 private:
-	Phone *m_phone;  //è¦è£…é¥°çš„æ‰‹æœº
+	Phone *m_phone;  //Òª×°ÊÎµÄÊÖ»ú
 public:
 	DecoratorPhone(Phone *phone): m_phone(phone) {}
 	virtual void ShowDecorate() { m_phone->ShowDecorate(); }
 };
-//å…·ä½“çš„è£…é¥°ç±»
+//¾ßÌåµÄ×°ÊÎÀà
 class DecoratorPhoneA : public DecoratorPhone
 {
 public:
 	DecoratorPhoneA(Phone *phone) : DecoratorPhone(phone) {}
 	void ShowDecorate() { DecoratorPhone::ShowDecorate(); AddDecorate(); }
 private:
-	void AddDecorate() { cout<<"å¢åŠ æŒ‚ä»¶"<<endl; } //å¢åŠ çš„è£…é¥°
+	void AddDecorate() { cout<<"Ôö¼Ó¹Ò¼ş"<<endl; } //Ôö¼ÓµÄ×°ÊÎ
 };
-//å…·ä½“çš„è£…é¥°ç±»
+//¾ßÌåµÄ×°ÊÎÀà
 class DecoratorPhoneB : public DecoratorPhone
 {
 public:
 	DecoratorPhoneB(Phone *phone) : DecoratorPhone(phone) {}
 	void ShowDecorate() { DecoratorPhone::ShowDecorate(); AddDecorate(); }
 private:
-	void AddDecorate() { cout<<"å±å¹•è´´è†œ"<<endl; } //å¢åŠ çš„è£…é¥°
+	void AddDecorate() { cout<<"ÆÁÄ»ÌùÄ¤"<<endl; } //Ôö¼ÓµÄ×°ÊÎ
 };
 
 
 int main()
 {
 	Phone *iphone = new NokiaPhone("6300");
-	Phone *dpa = new DecoratorPhoneA(iphone); //è£…é¥°ï¼Œå¢åŠ æŒ‚ä»¶
-	Phone *dpb = new DecoratorPhoneB(dpa);    //è£…é¥°ï¼Œå±å¹•è´´è†œ
+	Phone *dpa = new DecoratorPhoneA(iphone); //×°ÊÎ£¬Ôö¼Ó¹Ò¼ş
+	Phone *dpb = new DecoratorPhoneB(dpa);    //×°ÊÎ£¬ÆÁÄ»ÌùÄ¤
 	dpb->ShowDecorate();
 	delete dpa;
 	delete dpb;
